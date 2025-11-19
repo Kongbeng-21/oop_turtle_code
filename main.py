@@ -1,5 +1,6 @@
 import turtle
 import random
+import math
 
 class PolygonArt:
     def __init__(self):
@@ -85,19 +86,84 @@ class PolygonArt:
             orientation += 10     
 
     def draw_art5(self):
-        pass
+        num_sides = 4           
+        base_size = 30
+        border_size = 2
+
+        for i in range(30):
+            angle = i * 12               
+            radius = 10 + i * 8          
+            rad = math.radians(angle)
+            x = radius * math.cos(rad)
+            y = radius * math.sin(rad)
+
+            size = base_size * (0.7 ** (i / 10))  
+            color = self.get_new_color()
+            self.draw_polygon(num_sides, size, angle, [x, y], color, border_size)
 
     def draw_art6(self):
-        pass
+        border_size = 2
+
+        for x in range(-320, 321, 40):
+            y = 100 * math.sin(math.radians(x * 2))
+            num_sides = random.randint(3, 5)
+            size = 30
+            orientation = random.randint(0, 360)
+            color = self.get_new_color()
+            self.draw_polygon(num_sides, size, orientation, [x, y], color, border_size)
+
 
     def draw_art7(self):
-        pass
+        radius = 180
+        num_sides = random.randint(3, 6)
+        size = 40
+        border_size = 2
+
+        for angle in range(0, 360, 30):
+            rad = math.radians(angle)
+            x = radius * math.cos(rad)
+            y = radius * math.sin(rad)
+            color = self.get_new_color()
+            self.draw_polygon(num_sides, size, angle, [x, y], color, border_size)
 
     def draw_art8(self):
-        pass
+        start_x = -250
+        start_y = 200
+        step = 100
+        border_size = 2
+
+        for row in range(4):        
+            for col in range(5):    
+                x = start_x + col * step
+                y = start_y - row * step
+                num_sides = random.randint(3, 6)
+                size = 40
+                orientation = random.randint(0, 360)
+                color = self.get_new_color()
+                self.draw_polygon(num_sides, size, orientation, [x, y], color, border_size)
 
     def draw_art9(self):
-        pass
+        locations = [
+            [-250, 200],   
+            [250, 200],    
+            [-250, -200],  
+            [250, -200],  
+        ]
+
+        num_sides = random.randint(3, 5)
+        base_size = 120
+        border_size = 3
+
+        for loc in locations:
+            size = base_size
+            orientation = random.randint(0, 360)
+
+            for _ in range(3):   
+                color = self.get_new_color()
+                self.draw_polygon(num_sides, size, orientation, loc, color, border_size)
+                size *= 0.6
+                orientation += 10
+
 
     def generate(self, choice: int):
         if choice == 1:
