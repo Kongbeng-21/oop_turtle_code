@@ -43,7 +43,7 @@ class PolygonArt:
             center_x = random.randint(-320, 320)
             center_y = random.randint(-240, 240)
             base_size = random.randint(40, 140)
-            layers = random.randint(1, 2)   # 1 = เดี่ยว, 2 = ซ้อนสองชั้น
+            layers = random.randint(1, 2)   
             self.draw_nested_polygons(
                 num_sides=3,
                 center=[center_x, center_y],
